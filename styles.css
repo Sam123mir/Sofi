@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
+
+body {
+    font-family: 'Dancing Script', sans-serif; /* Cambié la fuente a algo más cursivo y bonito */
+    background: linear-gradient(to right, #ffdde1, #ee9ca7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    perspective: 1000px; /* Permite el efecto 3D */
+    overflow: hidden;
+}
+
+.card-container {
+    width: 400px;  /* Aumentamos el ancho de la tarjeta */
+    height: 450px; /* Aumentamos la altura de la tarjeta */
+    position: relative;
+    max-width: 100%; /* Asegura que la tarjeta se ajuste en pantallas pequeñas */
+}
+
+/* ✨ Tarjeta ✨ */
+.card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-in-out;
+}
+
+/* 🌸 Parte frontal 🌸 */
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    padding: 30px; /* Aumentamos el padding para que haya más espacio */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Añadir un toque de brillo y color en la parte frontal */
+.card-front {
+    background: white;
+    animation: glowing 3s infinite alternate;
+    font-family: 'Lyra', cursive; /* Cambié la fuente para un efecto más bonito */
+    font-size: 20px;  /* Aumentamos el tamaño de la fuente */
+    font-weight: bold; /* Asegura que el texto sea más destacado */
+}
+
+/* 🎆 Brillos sutiles 🎆 */
+@keyframes glowing {
+    0% { box-shadow: 0 0 15px rgba(255, 77, 109, 0.8); }
+    100% { box-shadow: 0 0 30px rgba(255, 26, 77, 0.8); }
+}
+
+/* 🎀 Parte trasera 🎀 */
+.card-back {
+    background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+    transform: rotateY(180deg);
+}
+
+/* 🦋 Botón destacado */
+button {
+    background: #ff4d6d;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-family: 'Dancing Script', sans-serif; /* Fuente para el botón */
+}
+
+/* ✨ Efecto de hover del botón */
+button:hover {
+    background: #ff1a4d;
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+/* 🎞️ Gif más estilizado */
+.gif {
+    width: 180px;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto de abrir tarjeta */
+.opened {
+    transform: rotateY(180deg);
+}
+
+/* 🌟 Mensaje flotante 🌟 */
+.message {
+    font-size: 20px;
+    background: rgba(255, 182, 193, 0.4);
+    padding: 12px;
+    border-radius: 12px;
+    animation: fadeIn 2s infinite alternate;
+    max-width: 300px;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Corazones flotantes animados */
+.hearts {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: floatHearts 3s ease-in-out infinite;
+    font-size: 30px;
+    color: #ff4d6d;
+}
+
+/* 👇 Ajustes para pantallas pequeñas (móviles) 👇 */
+@media screen and (max-width: 768px) {
+    .card-container {
+        width: 90%;  /* Ajusta el tamaño de la tarjeta */
+        height: 450px; /* Reduce la altura */
+    }
+
+    .card-front, .card-back {
+        padding: 20px; /* Menos padding en pantallas pequeñas */
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px; /* Ajuste de tamaño para el botón */
+    }
+
+    .gif {
+        width: 150px; /* Reduce el tamaño del gif */
+    }
+
+    .message {
+        font-size: 16px; /* Ajuste de tamaño del mensaje */
+        padding: 8px; /* Menos padding */
+    }
+
+    .hearts {
+        font-size: 25px; /* Corazones más pequeños */
+    }
+}
+
+/* 👇 Ajustes para pantallas muy pequeñas (móviles pequeños) 👇 */
+@media screen and (max-width: 480px) {
+    .card-container {
+        width: 100%;  /* Tarjeta ocupa el 100% de ancho */
+        height: 350px; /* Reduce más la altura */
+    }
+
+    .card-front, .card-back {
+        padding: 15px; /* Aún menos padding */
+    }
+
+    button {
+        padding: 8px 18px; /* Alineado a pantallas pequeñas */
+        font-size: 14px;  /* Más pequeño */
+    }
+
+    .gif {
+        width: 130px; /* Más pequeño en móviles muy pequeños */
+    }
+
+    .message {
+        font-size: 14px;  /* Más pequeño en móviles muy pequeños */
+        padding: 6px; /* Aún menos padding */
+    }
+
+    .hearts {
+        font-size: 20px;  /* Ajuste aún más pequeño */
+    }
+}
